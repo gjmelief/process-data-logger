@@ -35,3 +35,20 @@ def pv_logger(tag, value, filename=DEFAULT_FILENAME):
     new_reading = f"{timestamp},{tag},{value}\n"
     with proc_data.open('a') as f:
         f.write(new_reading)
+
+def read_log(filename=DEFAULT_FILENAME):
+    """Read the process data, convert to nested dict"""
+
+    process_data_path = Path(filename)
+    process_data_contents = process_data_path.read_text()
+    readings = process_data_contents.splitlines()
+    log = {}
+    for reading in readings:
+        # Split in timestamp, tag, value
+        fields = reading.split(',')
+        # If tag doesn't exist. Add to dict (outer layer)
+        if fields[1] not in log:
+            log[fields[1]] = {}
+        # If tag exists. Add timestamp:value to inner dict
+        log[fields[1]]['timestamp'] = fields[0]
+        log[fields[1]]['value'] = fields[2]

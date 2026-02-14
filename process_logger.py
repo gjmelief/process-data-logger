@@ -6,10 +6,29 @@ Coordinates data logging, viewing, and statistics via CLI.
 """
 from data_handler import pv_logger, create_csv, read_log
 
+def log_reading(filename):
+    """
+    Handles user input for logging a sensor reading.
+    Input: Tag and process value from user.
+    """
+
+def view_readings(sensor_data):
+    """
+    Displays last N readings for a selected tag.
+    Input: Tag and number of readings from user.
+    """
+
+def view_statistics(sensor_data):
+    """
+    Displays requested statistic for a selected tag.
+    Input: Tag and statistic type (avg, min, max) from user.
+    """
+
 if __name__ == "__main__":
 
-    create_csv(filename="test_menu.csv")
-    sensor_data = read_log(filename="test_menu.csv")
+    filename = "test_menu.csv"
+    create_csv(filename=filename)
+    sensor_data = read_log(filename=filename)
 
     while True:
         print('\n---Menu---')

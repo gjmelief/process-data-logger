@@ -30,10 +30,3 @@ def calculate_max(sensor_data, sensor_name):
     readings = list(sensor_data[sensor_name].values())
     max_value = max(readings)
     return max_value
-
-
-if __name__ == "__main__":
-    sensor_data = read_log()
-    print(calculate_average(sensor_data, "PI-001"))
-    print(calculate_min(sensor_data, "PI-001"))
-    print(calculate_max(sensor_data, "PI-001"))

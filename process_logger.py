@@ -24,7 +24,6 @@ def view_readings(sensor_data):
     sensor_name = input("What tag do you want to view the data for? ").upper()
     number = int(input("How many readings do you want to see? "))
     print(f"\nHere are the last {number} readings for tag {sensor_name}.\n")
-    # Print the data
     readings = list(sensor_data[sensor_name].items())
     for timestamp, value in readings[-number:]:
         print(f"{timestamp}: {value}")
@@ -55,6 +54,7 @@ if __name__ == "__main__":
     filename = "test_menu.csv"
     create_csv(filename=filename)
     sensor_data = read_log(filename=filename)
+    menu_options = ['1', '2', '3', '4']
 
     while True:
         print('\n---Menu---')
@@ -63,6 +63,9 @@ if __name__ == "__main__":
               "3. View Statistics\n"
               "4. Exit the program")
         option = input("Choose option from above: ")
+        if option not in menu_options:
+            print(f"\n{option} Is not in the menu."
+                  "\nChoose one of the options above")
 
         if option == '1':
             print("\n---Log Data menu---")

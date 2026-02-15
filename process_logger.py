@@ -100,28 +100,49 @@ if __name__ == "__main__":
 
         if option == '1':
             print("\n---Log Data menu---")
-            while True:
+            keep_logging = True
+            while keep_logging:
                 log_reading(sensor_data, filename)
-                cont = input("\nDo you want to log another reading? y/n: ").lower()
-                if cont == "n":
-                    sensor_data = read_log(filename=filename)
-                    break
+                while True:
+                    cont = input("\nDo you want to log another reading? y/n: ").lower()
+                    if cont in ["n", "no"]:
+                        sensor_data = read_log(filename=filename)
+                        keep_logging = False
+                        break
+                    elif cont in ["yes", "y"]:
+                        break
+                    else:
+                        print("Please enter y or n")
 
         if option == '2':
             print("\n---View Data menu---")
-            while True:
+            keep_logging = True
+            while keep_logging:
                 view_readings(sensor_data)
-                cont = input("\nDo you want to view another reading? y/n: ").lower()
-                if cont == "n":
-                    break
+                while True:
+                    cont = input("\nDo you want to view another reading? y/n: ").lower()
+                    if cont in ["n", "no"]:
+                        keep_logging = False
+                        break
+                    elif cont in ["yes", "y"]:
+                        break
+                    else:
+                        print("Please enter y or n")
 
         if option == '3':
             print("\n---View Statistics menu---")
-            while True:
+            keep_logging = True
+            while keep_logging:
                 view_statistics(sensor_data)
-                cont = input("\nDo you want to view another statistic? y/n: ").lower()
-                if cont == "n":
-                    break
+                while True:
+                    cont = input("\nDo you want to view another statistic? y/n: ").lower()
+                    if cont in ["n", "no"]:
+                        keep_logging = False
+                        break
+                    elif cont in ["yes", "y"]:
+                        break
+                    else:
+                        print("Please enter y or n")
 
         if option == '4':
             break

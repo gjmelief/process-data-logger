@@ -44,11 +44,15 @@ def view_statistics(sensor_data):
     """
     sensor_name = get_valid_sensor(sensor_data, "\nWhat tag do you want to view the "
                                    "statistic for? ")
+    menu_options = ['1', '2', '3']
     print("\nWhat statistic do you want to view?\n"
           "1. Average\n"
           "2. Minimum\n"
           "3. Maximum\n")
     option = input("Choose option from above: ")
+    if option not in menu_options:
+            print(f"\n{option} Is not in the menu."
+                  "\nChoose one of the options from above.")
     if option == '1':
         average = calculate_average(sensor_data, sensor_name)
         print(f"\nAverage: {average}")

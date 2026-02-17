@@ -86,7 +86,7 @@ def get_valid_sensor(sensor_data, prompt):
 
 if __name__ == "__main__":
 
-    filename = "test_menu.csv"
+    filename = "process_data.csv"
     create_csv(filename=filename)
     sensor_data = read_log(filename=filename)
     menu_options = ['1', '2', '3', '4']
